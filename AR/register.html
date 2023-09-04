@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8" />
+	<title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
+
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logoarstyle-removebg-preview.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logoarstyle-removebg-preview.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logoarstyle-removebg-preview.png" />
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
+	<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css" />
+	<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css" />
+	<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+	<link rel="stylesheet" href="vendors/scripts/script.js">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
+	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258" crossorigin="anonymous"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "G-GBZ3SGGX85");
+	</script>
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+				"gtm.start": new Date().getTime(),
+				event: "gtm.js"
+			});
+			var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s),
+				dl = l != "dataLayer" ? "&l=" + l : "";
+			j.async = true;
+			j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+			f.parentNode.insertBefore(j, f);
+		})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+	</script>
+	<!-- End Google Tag Manager -->
+</head>
+
+<body class="login-page">
+	<div class="login-header box-shadow">
+		<div class="container-fluid d-flex justify-content-between align-items-center">
+			<div class="brand-logo">
+				<a href="login.html">
+					<img src="vendors/images/logoarstyle.svg" alt="" />
+				</a>
+			</div>
+			<div class="login-menu">
+				<ul>
+					<li><a href="login.html">Acceso</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="register-page-wrap d-flex align-items-center flex-wrap justify-content-center">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6 col-lg-7">
+					<img src="vendors/images/register-page-img.png" alt="" />
+				</div>
+				<div class="col-md-6 col-lg-5">
+					<div class="register-box bg-white box-shadow border-radius-10">
+						<div class="wizard-content">
+							<form class="tab-wizard2 wizard-circle wizard">
+								<h5>Credencial de cuenta</h5>
+								<section>
+									<div class="form-wrap max-width-600 mx-auto">
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Correo electrónico*</label>
+											<div class="col-sm-8">
+												<input type="email" name="correo" id="correo" class="form-control" required autofocus />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Usuario*</label>
+											<div class="col-sm-8">
+												<input type="text" name="usuario" id="usuario" class="form-control" required />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Contraseña*</label>
+											<div class="col-sm-8">
+												<input type="password" name="contrasena" id="contrasena" class="form-control" required />
+											</div>
+										</div>
+									</div>
+								</section>
+								<!-- Step 2 -->
+								<h5>Infromación Personal</h5>
+								<section>
+									<div class="form-wrap max-width-600 mx-auto">
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Nombres*</label>
+											<div class="col-sm-8">
+												<input type="text" name="nombres" id="nombres" class="form-control" required />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Apellidos*</label>
+											<div class="col-sm-8">
+												<input type="text" name="apellidos" id="apellidos" class="form-control" required />
+											</div>
+										</div>
+										<div class="form-group row align-items-center">
+											<label class="col-sm-4 col-form-label">Sexo*</label>
+											<div class="col-sm-8">
+												<?php
+												$con = mysqli_connect("localhost", "root", "", "arstyle");
+												$query_sexo = mysqli_query($con, "SELECT * FROM sexo WHERE (id_sexo<3);");
+												mysqli_close($con);
+												$result_sexo = mysqli_num_rows($query_sexo);
+
+												?>
+												<select name="sexo" id="sexo" class="form-control">
+													<?php
+													if ($result_sexo > 0) {
+														while ($sexo = mysqli_fetch_array($query_sexo)) {
+													?>
+															<option value="<?php echo $sexo["id_sexo"]; ?>"><?php echo $sexo["nombre_sexo"] ?></option>
+													<?php
+														}
+													}
+													?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Ciudad</label>
+											<div class="col-sm-8">
+												<?php
+												$con = mysqli_connect("localhost", "root", "", "arstyle");
+												$query_ciudad = mysqli_query($con, "SELECT * FROM ciudad WHERE (id_ciudad<10);");
+												mysqli_close($con);
+												$result_ciudad = mysqli_num_rows($query_ciudad);
+												?>
+
+												<select name="ciudad" id="ciudad" class="form-control">
+													<?php
+													if ($result_ciudad > 0) {
+														while ($ciudad = mysqli_fetch_array($query_ciudad)) {
+													?>
+															<option value="<?php echo $ciudad["id_ciudad"]; ?>"><?php echo $ciudad["nombre_ciudad"] ?></option>
+													<?php
+														}
+													}
+													?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">C.I.</label>
+											<div class="col-sm-8">
+												<input type="text" class="form-control" />
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Extensión del C.I.</label>
+											<div class="col-sm-8">
+												<?php
+												$con = mysqli_connect("localhost", "root", "", "arstyle");
+												$query_extension = mysqli_query($con, "SELECT * FROM extension WHERE (id_extension<10);");
+												mysqli_close($con);
+												$result_extension = mysqli_num_rows($query_extension);
+												?>
+												<select name="extension" id="extension" class="form-control">
+													<?php
+													if ($result_extension > 0) {
+														while ($extension = mysqli_fetch_array($query_extension)) {
+													?>
+															<option value="<?php echo $extension["id_extension"]; ?>"><?php echo $extension["nombre_extension"] ?></option>
+													<?php
+														}
+													}
+													?>
+												</select>
+											</div>
+										</div>
+										<div class="form-group row">
+											<label class="col-sm-4 col-form-label">Fecha de nacimiento</label>
+											<div class="col-sm-8">
+												<input type="date" name="nacimiento" id="nacimiento" class="form-control" onchange="calcularEdad()" required/>
+											</div>
+										</div>
+									</div>
+								</section>
+								<!-- Step 4 -->
+								<h5>Información General</h5>
+								<section>
+									<div class="form-wrap max-width-600 mx-auto">
+										<ul class="register-info">
+											<li>
+												<div class="row">
+													<div class="col-sm-4 weight-600">Email Address</div>
+													<div class="col-sm-8">example@abc.com</div>
+												</div>
+											</li>
+											<li>
+												<div class="row">
+													<div class="col-sm-4 weight-600">Username</div>
+													<div class="col-sm-8">Example</div>
+												</div>
+											</li>
+											<li>
+												<div class="row">
+													<div class="col-sm-4 weight-600">Password</div>
+													<div class="col-sm-8">.....000</div>
+												</div>
+											</li>
+											<li>
+												<div class="row">
+													<div class="col-sm-4 weight-600">Full Name</div>
+													<div class="col-sm-8">john smith</div>
+												</div>
+											</li>
+											<li>
+												<div class="row">
+													<div class="col-sm-4 weight-600">Location</div>
+													<div class="col-sm-8">123 Example</div>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</section>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- success Popup html Start -->
+	<button type="button" id="success-modal-btn" hidden data-toggle="modal" data-target="#success-modal" data-backdrop="static">
+		Launch modal
+	</button>
+	<div class="modal fade" id="success-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered max-width-400" role="document">
+			<div class="modal-content">
+				<div class="modal-body text-center font-18">
+					<h3 class="mb-20">Formulario enviado!</h3>
+					<div class="mb-30 text-center">
+						<img src="vendors/images/success.png" />
+					</div>
+					Gracias por unirse a nuestra empresa ARStyle y compartir junto con ustedes el avance de
+					cada uno de nuestros proyectos.
+				</div>
+				<div class="modal-footer justify-content-center">
+					<a href="login.html" class="btn btn-primary">Hecho</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="vendors/scripts/core.js"></script>
+	<script src="vendors/scripts/script.min.js"></script>
+	<script src="vendors/scripts/process.js"></script>
+	<script src="vendors/scripts/layout-settings.js"></script>
+	<script src="src/plugins/jquery-steps/jquery.steps.js"></script>
+	<script src="vendors/scripts/steps-setting.js"></script>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+</body>
+
+</html>
