@@ -1095,7 +1095,9 @@ section {
   line-height: 24px;
   font-size: 20px;
   margin-bottom: 0;
+  text-align: center;
 }
+
 
 .featured-services .service-item:hover {
   transform: translateY(-10px);
@@ -1207,7 +1209,7 @@ section {
 
 .clients .swiper-slide img {
   opacity: 0.5;
-  transition: 0.3s;
+  transition: 0.1s;
   filter: grayscale(100);
 }
 
