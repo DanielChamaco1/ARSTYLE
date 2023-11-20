@@ -103,8 +103,8 @@ section {
 .section-header p {
   margin: 0 auto;
   color: var(--color-secondary-light);
-  font-weight: 700;
-  font-size: 20px;
+  font-weight: 455;
+  font-size: 23px;
 }
 
 @media (min-width: 1280px) {
@@ -1179,9 +1179,9 @@ section {
 }
 
 .about .tab-content h4 {
-  font-size: 20px;
+  font-size: 27px;
   margin: 0;
-  font-weight: 750;
+  font-weight: 795;
   color: var(--color-secondary);
 }
 
@@ -1190,6 +1190,12 @@ section {
   line-height: 0;
   margin-right: 8px;
   color: var(--color-primary);
+}
+.about .tab-content p {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 300;
+  color: var(--color-secondary);
 }
 
 /*--------------------------------------------------------------
